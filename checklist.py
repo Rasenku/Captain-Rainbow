@@ -5,17 +5,6 @@ checklist = []
  #checklist.append('Orange')
  #print(checklist)
 
-def list_all_items():
-    index = 0
-    for list_item in checklist:
-        print(str(index) + list_item)
-        index += 1
-
-def mark_completed(index):
-    update(index, "√" + checklist[index])
-
-
-
 
  # CREATE
 def create(item):
@@ -35,6 +24,17 @@ def update(index, item):
 def destroy(index):
     checklist.pop(index)
 
+def list_all_items():
+    index = 0
+    for list_item in checklist:
+        print("{} {}".format(index, list_item))
+        index  += 1
+
+
+def mark_completed(index):
+    update(index, "√" + checklist[index])
+
+
 def select(function_code):
     # Create item
     if function_code == "C":
@@ -52,9 +52,15 @@ def select(function_code):
     elif function_code == "P":
         list_all_items()
 
+    elif function_code == "Q":
+        # This is where we want to stop our loop
+        return False
+
     # Catch all
     else:
         print("Unknown Option")
+
+    return True
 
 def user_input(prompt):
     # the input function will display a message in the terminal
@@ -91,7 +97,7 @@ def test():
     user_value = user_input("Please Enter a value:")
     print(user_value)
 
-test()
+# test()
 
 
 
